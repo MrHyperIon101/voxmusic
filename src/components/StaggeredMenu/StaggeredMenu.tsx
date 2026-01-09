@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Menu, X } from 'lucide-react';
 import './StaggeredMenu.css';
@@ -42,7 +42,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     displaySocials = true,
     displayItemNumbering = true,
     className,
-    logoUrl = '/favicon.png', // Unused but kept for API stability
+    logoUrl = '/favicon.png',
     menuButtonColor = '#fff',
     openMenuButtonColor = '#fff',
     accentColor = '#5227FF',
@@ -62,9 +62,10 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const closeTweenRef = useRef<gsap.core.Tween | null>(null);
     const colorTweenRef = useRef<gsap.core.Tween | null>(null);
     const toggleBtnRef = useRef<HTMLButtonElement>(null);
-    // busyRef removed
+    const busyRef = useRef(false);
     const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
+    // FIX: Initial Setup to prevent FOUC / Peeking
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             const panel = panelRef.current;
@@ -78,12 +79,11 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             }
             preLayerElsRef.current = preLayers;
 
-            // Updated offscreen value to 120% to imply fully hidden + buffer for shadows/borders
-            const offscreen = position === 'left' ? -120 : 120;
+            const offscreen = position === 'left' ? -105 : 105; // Moved further offscreen
 
-            // Set initial state via GSAP to match CSS (prevent jumps if CSS fails/lags)
-            // Use autoAlpha for visibility: hidden handling
+            // Set initial state: Hidden and offscreen
             gsap.set([panel, ...preLayers], { xPercent: offscreen, autoAlpha: 0 });
+            // autoAlpha: 0 sets opacity:0 and visibility:hidden
 
             if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor });
         });
@@ -107,11 +107,9 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         const socialTitle = panel.querySelector('.sm-socials-title');
         const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
 
-        // Current X position (GSAP tracked)
-        // const panelStart = Number(gsap.getProperty(panel, 'xPercent'));
-        const offscreen = position === 'left' ? -120 : 120;
+        const layerStates = layers.map(el => ({ el, start: Number(gsap.getProperty(el, 'xPercent')) }));
+        const panelStart = Number(gsap.getProperty(panel, 'xPercent'));
 
-        // Reset items
         if (itemEls.length) {
             gsap.set(itemEls, { yPercent: 140, rotate: 10 });
         }
@@ -127,29 +125,22 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         const tl = gsap.timeline({ paused: true });
 
-        // Stagger layer entry
-        layers.forEach((el, i) => {
-            // Include autoAlpha: 1 in fromVars so it becomes visible immediately upon animation start
-            tl.fromTo(el,
-                { xPercent: offscreen, autoAlpha: 1 },
-                { xPercent: 0, duration: 0.5, ease: 'power4.out' },
-                i * 0.07
-            );
+        // Force visibility ON at start of open
+        tl.set([panel, ...layers], { autoAlpha: 1 });
+
+        layerStates.forEach((ls, i) => {
+            tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
         });
-
-        const lastTime = layers.length ? (layers.length - 1) * 0.07 : 0;
-        const panelInsertTime = lastTime + (layers.length ? 0.08 : 0);
+        const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
+        const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
         const panelDuration = 0.65;
-
-        // Panel entry
         tl.fromTo(
             panel,
-            { xPercent: offscreen, autoAlpha: 1 },
+            { xPercent: panelStart },
             { xPercent: 0, duration: panelDuration, ease: 'power4.out' },
             panelInsertTime
         );
 
-        // Content animations (Staggered items, social, etc.)
         if (itemEls.length) {
             const itemsStartRatio = 0.15;
             const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
@@ -211,13 +202,19 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         openTlRef.current = tl;
         return tl;
-    }, [position]);
+    }, []);
 
     const playOpen = useCallback(() => {
-        // Removed busyRef deadlock risk. GSAP handles overwrites.
+        if (busyRef.current) return;
+        busyRef.current = true;
         const tl = buildOpenTimeline();
         if (tl) {
+            tl.eventCallback('onComplete', () => {
+                busyRef.current = false;
+            });
             tl.play(0);
+        } else {
+            busyRef.current = false;
         }
     }, [buildOpenTimeline]);
 
@@ -232,7 +229,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         const all = [...(layers || []), panel];
         closeTweenRef.current?.kill();
-        const offscreen = position === 'left' ? -120 : 120;
+        const offscreen = position === 'left' ? -105 : 105;
 
         closeTweenRef.current = gsap.to(all, {
             xPercent: offscreen,
@@ -240,7 +237,9 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             ease: 'power3.in',
             overwrite: 'auto',
             onComplete: () => {
-                // Reset content states
+                // Hide after closing
+                gsap.set(all, { autoAlpha: 0 });
+
                 const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
                 if (itemEls.length) {
                     gsap.set(itemEls, { yPercent: 140, rotate: 10 });
@@ -253,9 +252,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
                 if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
                 if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
-
-                // Hide fully after animation to prevent peeking
-                gsap.set(all, { autoAlpha: 0 });
+                busyRef.current = false;
             }
         });
     }, [position]);
@@ -279,7 +276,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (toggleBtnRef.current) {
             gsap.set(toggleBtnRef.current, { color: menuButtonColor });
         }
@@ -309,7 +306,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         }
     }, [playClose, animateColor, onMenuClose]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!closeOnClickAway || !open) return;
 
         const handleClickOutside = (event: MouseEvent) => {

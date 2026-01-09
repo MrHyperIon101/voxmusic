@@ -1,15 +1,17 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { Download } from 'lucide-react';
 import styles from './Hero.module.css';
 
 export default function Hero() {
+    // Removed isMobile check - Video is now enabled on all devices
 
     return (
         <section className={styles.container}>
             <div className={styles.imageBackground}>
-                {/* Video enabled for both Desktop and Mobile */}
+                {/* Video - Always visible (Desktop & Mobile) */}
                 <video
                     autoPlay
                     loop
@@ -57,10 +59,8 @@ export default function Hero() {
                             <p className={styles.price}>Deploy the Core</p>
                             <p className={styles.subPrice}>Audiophile-Grade Controls</p>
                         </div>
-                        <Link href="/download" className={styles.buyButtonLink}>
-                            <button className={styles.buyButton} aria-label="Download">
-                                <Download size={24} className={styles.btnIcon} />
-                            </button>
+                        <Link href="/download" className={styles.buyButton} aria-label="Download">
+                            <Download size={24} className={styles.btnIcon} />
                         </Link>
                     </motion.div>
                 </div>

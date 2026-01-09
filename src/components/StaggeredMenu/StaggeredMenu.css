@@ -2,7 +2,8 @@
     position: relative;
     width: 100%;
     height: 100%;
-    z-index: 40;
+    z-index: 99999;
+    /* Super high z-index to stay on top */
     pointer-events: none;
 }
 
@@ -12,7 +13,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 40;
+    z-index: 99999;
     overflow: hidden;
 }
 
@@ -114,18 +115,14 @@
     z-index: 10;
     pointer-events: auto;
     box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.4);
-
-    /* Initial state: Hidden and moved off-screen to prevent FOUC & Peeking */
-    transform: translateX(120%);
+    /* Initial state hidden by CSS to prevent FOUC, GSAP will override if needed or we use GSAP set */
     visibility: hidden;
-    will-change: transform, visibility;
+    opacity: 0;
 }
 
 [data-position='left'] .staggered-menu-panel {
     right: auto;
     left: 16px;
-    transform: translateX(-120%);
-    /* Left side initial state */
 }
 
 /* Prelayers matching the floating panel shape to avoid "additional rectangle" artifact */
@@ -145,6 +142,9 @@
     /* Match radius */
     overflow: hidden;
     /* Ensure content respects radius */
+    /* Initial state hidden */
+    visibility: hidden;
+    opacity: 0;
 }
 
 [data-position='left'] .sm-prelayers {
@@ -158,18 +158,9 @@
     right: 0;
     height: 100%;
     width: 100%;
-
-    /* Initial state: Hidden off-screen in same direction as panel */
-    transform: translateX(120%);
-    visibility: hidden;
-    will-change: transform, visibility;
-
+    transform: translateX(0);
     /* No border radius needed here as parent handles overflow, but good for safety */
     border-radius: 32px;
-}
-
-[data-position='left'] .sm-prelayer {
-    transform: translateX(-120%);
 }
 
 .sm-panel-inner {

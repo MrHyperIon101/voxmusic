@@ -29,9 +29,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    object-position: center;
     display: block;
-    /* Force visible */
     /* Use filter for smoother, high-quality darkening */
     filter: brightness(0.6) contrast(1.1);
     will-change: transform;
@@ -55,6 +53,9 @@
     z-index: 3;
     pointer-events: none;
 }
+
+/* Show Desktop Image by default on larger screens */
+/* Removed desktop/mobile toggle classes to enable video everywhere */
 
 
 .content {
