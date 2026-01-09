@@ -143,7 +143,8 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         const lastTime = (!isMobile && layerStates.length) ? (layerStates.length - 1) * 0.07 : 0;
         const panelInsertTime = lastTime + ((!isMobile && layerStates.length) ? 0.08 : 0);
-        const panelDuration = 0.65;
+        // Faster duration on mobile
+        const panelDuration = isMobile ? 0.4 : 0.65;
 
         tl.fromTo(
             panel,
@@ -155,14 +156,16 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         if (itemEls.length) {
             const itemsStartRatio = 0.15;
             const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
+
+            // Simpler, faster stagger on mobile
             tl.to(
                 itemEls,
                 {
                     yPercent: 0,
-                    rotate: 0,
-                    duration: 1,
+                    rotate: 0, // Always rotate back to 0
+                    duration: isMobile ? 0.6 : 1,
                     ease: 'power4.out',
-                    stagger: { each: 0.1, from: 'start' }
+                    stagger: { each: isMobile ? 0.05 : 0.1, from: 'start' }
                 },
                 itemsStart
             );
@@ -173,7 +176,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         duration: 0.6,
                         ease: 'power2.out',
                         '--sm-num-opacity': 1,
-                        stagger: { each: 0.08, from: 'start' }
+                        stagger: { each: isMobile ? 0.04 : 0.08, from: 'start' }
                     },
                     itemsStart + 0.1
                 );

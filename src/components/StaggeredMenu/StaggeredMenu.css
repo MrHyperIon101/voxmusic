@@ -319,6 +319,14 @@
     opacity: var(--sm-num-opacity, 0);
 }
 
+@media (max-width: 768px) {
+    .staggered-menu-panel {
+        /* Reduce blur for performance on mobile */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+}
+
 @media (max-width: 1024px) {
     .staggered-menu-panel {
         width: 100%;
