@@ -62,7 +62,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const closeTweenRef = useRef<gsap.core.Tween | null>(null);
     const colorTweenRef = useRef<gsap.core.Tween | null>(null);
     const toggleBtnRef = useRef<HTMLButtonElement>(null);
-    const busyRef = useRef(false);
+    // busyRef removed
     const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
     useLayoutEffect(() => {
@@ -214,16 +214,10 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     }, [position]);
 
     const playOpen = useCallback(() => {
-        if (busyRef.current) return;
-        busyRef.current = true;
+        // Removed busyRef deadlock risk. GSAP handles overwrites.
         const tl = buildOpenTimeline();
         if (tl) {
-            tl.eventCallback('onComplete', () => {
-                busyRef.current = false;
-            });
             tl.play(0);
-        } else {
-            busyRef.current = false;
         }
     }, [buildOpenTimeline]);
 
@@ -262,8 +256,6 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
                 // Hide fully after animation to prevent peeking
                 gsap.set(all, { autoAlpha: 0 });
-
-                busyRef.current = false;
             }
         });
     }, [position]);
