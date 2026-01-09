@@ -129,9 +129,12 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         // Stagger layer entry
         layers.forEach((el, i) => {
-            // Ensure they start visible (autoAlpha 1) but offscreen
-            tl.set(el, { autoAlpha: 1 }, 0);
-            tl.fromTo(el, { xPercent: offscreen }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
+            // Include autoAlpha: 1 in fromVars so it becomes visible immediately upon animation start
+            tl.fromTo(el,
+                { xPercent: offscreen, autoAlpha: 1 },
+                { xPercent: 0, duration: 0.5, ease: 'power4.out' },
+                i * 0.07
+            );
         });
 
         const lastTime = layers.length ? (layers.length - 1) * 0.07 : 0;
@@ -139,10 +142,9 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         const panelDuration = 0.65;
 
         // Panel entry
-        tl.set(panel, { autoAlpha: 1 }, 0); // Make visible at start of sequence
         tl.fromTo(
             panel,
-            { xPercent: offscreen },
+            { xPercent: offscreen, autoAlpha: 1 },
             { xPercent: 0, duration: panelDuration, ease: 'power4.out' },
             panelInsertTime
         );
