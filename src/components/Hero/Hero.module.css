@@ -54,26 +54,6 @@
     pointer-events: none;
 }
 
-/* Show Desktop Image by default on larger screens */
-.desktopMsg {
-    display: block;
-}
-
-.mobileImg {
-    display: none;
-}
-
-/* Mobile Switch */
-@media (max-width: 768px) {
-    .desktopMsg {
-        display: none;
-    }
-
-    .mobileImg {
-        display: block;
-    }
-}
-
 
 .content {
     position: relative;

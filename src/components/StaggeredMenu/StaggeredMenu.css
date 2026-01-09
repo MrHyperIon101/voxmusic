@@ -114,11 +114,18 @@
     z-index: 10;
     pointer-events: auto;
     box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.4);
+
+    /* Initial state: Hidden and moved off-screen to prevent FOUC & Peeking */
+    transform: translateX(120%);
+    visibility: hidden;
+    will-change: transform, visibility;
 }
 
 [data-position='left'] .staggered-menu-panel {
     right: auto;
     left: 16px;
+    transform: translateX(-120%);
+    /* Left side initial state */
 }
 
 /* Prelayers matching the floating panel shape to avoid "additional rectangle" artifact */
@@ -151,9 +158,18 @@
     right: 0;
     height: 100%;
     width: 100%;
-    transform: translateX(0);
+
+    /* Initial state: Hidden off-screen in same direction as panel */
+    transform: translateX(120%);
+    visibility: hidden;
+    will-change: transform, visibility;
+
     /* No border radius needed here as parent handles overflow, but good for safety */
     border-radius: 32px;
+}
+
+[data-position='left'] .sm-prelayer {
+    transform: translateX(-120%);
 }
 
 .sm-panel-inner {
