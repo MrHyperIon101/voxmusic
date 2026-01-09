@@ -1,0 +1,227 @@
+.main {
+    min-height: 100vh;
+    color: #fff;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    /* Background removed for transparency */
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+}
+
+/* Left Column */
+.formSection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    color: #a78bfa;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 16px;
+    background: linear-gradient(to right, #fff, #bbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.desc {
+    font-size: 18px;
+    color: #888;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stepNumber {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.cardTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 4px;
+}
+
+.input,
+.select,
+.textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+    border-color: rgba(124, 58, 237, 0.5);
+    background: rgba(124, 58, 237, 0.05);
+}
+
+.submitBtn {
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px;
+    border-radius: 100px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+}
+
+/* Right Column */
+.infoSection {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.infoTitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.infoCard {
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.4) 0%, rgba(10, 10, 10, 0.4) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    transition: background 0.2s;
+}
+
+.infoCard:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.infoCardTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.infoCardDesc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .infoSection {
+        padding-top: 0;
+    }
+}

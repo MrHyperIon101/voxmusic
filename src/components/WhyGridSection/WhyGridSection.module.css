@@ -1,0 +1,103 @@
+.section {
+    width: 100%;
+    padding: 0 0 100px 0;
+    background-color: transparent;
+    /* Changed from #000 to transparent */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    margin-top: -20vh;
+    /* Pull cards up to overlap/follow closely */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    /* Constrain max-width for better centering of 2 cards */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 Columns for big impact cards */
+    gap: 40px;
+    /* Increased gap for cleaner look */
+    width: 100%;
+}
+
+.card {
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    /* Default barely visible base */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    transition: transform 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #333;
+}
+
+.cardContent {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.cardTitle {
+    color: #fff;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.cardDesc {
+    color: #a1a1aa;
+    font-size: 20px;
+    max-width: 400px;
+}
+
+.iconWrapper {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cardTitle {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        margin-top: 0;
+        /* Stack cleanly on mobile, no overlap */
+        padding-top: 40px;
+        /* Add some breathing room */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}

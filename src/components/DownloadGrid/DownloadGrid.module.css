@@ -1,0 +1,220 @@
+.section {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.4) 0%, rgba(10, 10, 10, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Platform Glows */
+.androidGlow {
+    box-shadow: 0 0 100px rgba(164, 198, 57, 0.05) inset;
+}
+
+.windowsGlow {
+    box-shadow: 0 0 100px rgba(0, 120, 215, 0.05) inset;
+}
+
+.macGlow {
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.05) inset;
+}
+
+.tvGlow {
+    box-shadow: 0 0 100px rgba(229, 9, 20, 0.05) inset;
+}
+
+/* Netflix red/Smart TV generic glow */
+
+.header {
+    margin-bottom: 32px;
+}
+
+.iconRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.platformIcon {
+    opacity: 0.9;
+}
+
+.deviceIcon {
+    opacity: 0.2;
+    transform: scale(1.2);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.5;
+}
+
+/* Feature Grid 2x2 */
+.featureGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.featureBox {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.featureBox:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.featIcon {
+    margin-bottom: 4px;
+}
+
+.featTitle {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.featDesc {
+    color: #666;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: auto;
+}
+
+.primaryAction {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.primaryAction:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.betaAction {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 16px 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.betaAction:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.btnText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.btnTitle {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.btnSub {
+    color: #4ade80;
+    /* Green for stable */
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.betaSub {
+    color: #3b82f6;
+    /* Blue for beta */
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.arrow {
+    color: #666;
+}
+
+.tag {
+    font-size: 10px;
+    background: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: auto;
+    }
+}

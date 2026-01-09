@@ -1,0 +1,214 @@
+.footer {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    background: #000;
+    padding: 60px;
+    /* Simplified padding */
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    position: relative;
+    z-index: 50;
+    /* Ensure it sits above potential messy backgrounds */
+}
+
+.container {
+    width: 100%;
+    /* Fill the footer card */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Safety wrap for very small screens */
+}
+
+/* Brand Column (Left) */
+.brandColumn {
+    flex: 1;
+    min-width: 280px;
+    /* Prevent crushing */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.brandHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.brandName {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.brandDesc {
+    font-size: 15px;
+    color: #a1a1aa;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.socialRow {
+    display: flex;
+    gap: 12px;
+}
+
+.socialIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+    /* Prevent squishing */
+    text-decoration: none;
+}
+
+.socialIcon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+/* Link Column (Right) */
+.linksColumn {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+    /* Right align items */
+    text-align: right;
+    /* Right align text */
+}
+
+.columnHeader {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.columnLink {
+    font-size: 15px;
+    color: #a1a1aa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.columnLink:hover {
+    color: #fff;
+}
+
+/* Bottom Section */
+.bottomSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+    color: #71717a;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bottomLeft {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.privacyLink {
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.privacyLink:hover {
+    color: #a1a1aa;
+}
+
+.designerCredit {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #52525b;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 24px;
+        width: 95%;
+        /* Wider on mobile */
+        border-radius: 32px;
+    }
+
+    .container {
+        gap: 40px;
+    }
+
+    .topSection {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .brandColumn {
+        width: 100%;
+        align-items: center;
+        /* Center on mobile? Or keep left? keeping left usually better for text */
+        text-align: left;
+    }
+
+    .linksColumn {
+        width: 100%;
+        align-items: flex-start;
+        /* Reset to left align on mobile for stack */
+        text-align: left;
+    }
+
+    .bottomSection {
+        flex-direction: column;
+        align-items: center;
+        /* Center bottom info */
+        text-align: center;
+    }
+
+    .bottomLeft {
+        justify-content: center;
+    }
+}

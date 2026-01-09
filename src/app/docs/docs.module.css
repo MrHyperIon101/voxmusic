@@ -1,0 +1,522 @@
+/* Global Layout */
+.pageContainer {
+    min-height: 100vh;
+    min-height: 100vh;
+    /* background: #000; Removed */
+    color: #fff;
+    padding-bottom: 128px;
+    padding-bottom: 128px;
+    /* background-image removed for full transparency */
+}
+
+.maxWidthWrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero - Handled by DownloadHero component now, but search needs styling */
+.searchContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 50;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.searchInput:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.kbd {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 8px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #9ca3af;
+}
+
+.searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 12px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.searchResultItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.searchResultItem:last-child {
+    border-bottom: none;
+}
+
+.searchResultItem:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Quick Links */
+.quickLinksGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+    .quickLinksGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.quickLinkCard {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+}
+
+.quickLinkCard:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.quickLinkContent {
+    position: relative;
+    z-index: 2;
+}
+
+.quickLinkTitle {
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 12px;
+}
+
+/* Main Layout */
+.mainLayout {
+    display: grid;
+    gap: 32px;
+}
+
+@media (min-width: 1024px) {
+    .mainLayout {
+        grid-template-columns: 280px 1fr;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 120px;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+    padding-right: 16px;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        display: block;
+    }
+}
+
+.sidebarLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+}
+
+.sidebarLink:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebarLinkActive {
+    background: rgba(255, 255, 255, 0.15);
+    color: #d8b4fe;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.subLinks {
+    margin-left: 32px;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.subLink {
+    font-size: 12px;
+    color: #6b7280;
+    text-decoration: none;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    display: block;
+}
+
+.subLink:hover {
+    color: #d1d5db;
+}
+
+/* Content Area */
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionIconBox {
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.sectionTitle {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+/* Subsections */
+.subsection {
+    margin-bottom: 48px;
+    scroll-margin-top: 120px;
+}
+
+.subsectionTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f3f4f6;
+}
+
+.paragraph {
+    font-size: 16px;
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* Cards & Grids */
+.grid3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .grid3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .grid2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.featureCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s;
+}
+
+.featureCard:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.cardIcon {
+    color: #ffffff;
+    margin-bottom: 12px;
+    transition: transform 0.3s;
+}
+
+.featureCard:hover .cardIcon {
+    transform: scale(1.1);
+}
+
+.cardTitle {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.cardDesc {
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+/* Feature List Item */
+.featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.featureItem {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.2s;
+}
+
+.featureItem:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.itemIconBox {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    height: fit-content;
+}
+
+/* Alert / Info Boxes */
+.alertBox {
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.alertGreen {
+    border-color: rgba(34, 197, 94, 0.2);
+    background: linear-gradient(to bottom right, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+}
+
+.alertBlue {
+    border-color: rgba(59, 130, 246, 0.2);
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+.alertHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+}
+
+.btnDownload {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #22c55e;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.btnDownload:hover {
+    transform: scale(1.05);
+}
+
+/* Accordion */
+.accordionItem {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.accordionTrigger {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+}
+
+.accordionTrigger:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.accordionContent {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Quality Grid */
+.qualityGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (min-width: 1024px) {
+    .qualityGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.qualityCard {
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.qualityValue {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.qualityLabel {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* Footer CTA */
+.footerCTA {
+    margin-top: 96px;
+    padding: 32px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ctaButton {
+    background: #fff;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+}
+
+/* Platform Status */
+.platformCard {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    margin-top: 8px;
+}

@@ -1,0 +1,146 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 150px;
+    /* Increased spacing */
+    padding-bottom: 100px;
+}
+
+.card {
+    width: 90%;
+    /* Matches Hero textOverlay width */
+    max-width: 1600px;
+    /* Matches Hero textOverlay max-width */
+    height: 360px;
+    /* Reduced vertical size */
+    /* Glassmorphism background - Very Dark Blue/Black */
+    background: rgba(2, 6, 15, 0.85);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.005);
+    box-shadow: 0 30px 100px rgba(0, 100, 255, 0.1);
+}
+
+.backgroundGlow {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark glow */
+    background: radial-gradient(ellipse at center, rgba(0, 80, 200, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    transition: opacity 0.6s ease;
+}
+
+.card:hover .backgroundGlow {
+    opacity: 0.8;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 48px;
+    /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.iconWrapper {
+    margin-bottom: 20px;
+}
+
+.textGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.plainTitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    /* Smaller text */
+    font-weight: 500;
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+@media (min-width: 900px) {
+    .breakOnDesktop {
+        display: block;
+    }
+}
+
+.infoGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.description {
+    font-size: 16px;
+    color: #a1a1aa;
+    font-weight: 400;
+    max-width: 250px;
+    display: none;
+    /* Hide old description if not needed, or keep it. User didn't explicitly say remove, but "plain text" might imply just the title. I'll leaving it for now but I modified the title. */
+}
+
+.exploreBtn {
+    background: white;
+    color: black;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    margin-top: 24px;
+}
+
+.exploreBtn:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        height: auto;
+        /* Very Dark Purple on Mobile */
+        background: rgba(20, 5, 25, 0.9);
+    }
+
+    .content {
+        padding: 40px;
+        gap: 40px;
+    }
+
+    .infoGroup {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .plainTitle {
+        font-size: 32px;
+    }
+}

@@ -1,0 +1,215 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Dynamic viewport height for mobile */
+    background-color: #000;
+    /* Removed overflow: hidden to ensure it doesn't clip children if they somehow overflow, though Hero should contain them. 
+       Actually, keep overflow hidden for the Hero itself to crop the video, but ensure it doesn't stop document scroll. */
+    overflow: hidden;
+    display: block;
+}
+
+.imageBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bgMedia {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: none;
+    /* Use filter for smoother, high-quality darkening */
+    filter: brightness(0.6) contrast(1.1);
+    will-change: transform;
+    /* Force GPU promotion */
+    pointer-events: none;
+    /* Prevent stealing interaction */
+}
+
+/* Overlay removed in favor of direct filter */
+.darkOverlay {
+    display: none;
+}
+
+.bottomFade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 0%, #000000 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Show Desktop Image by default on larger screens */
+.desktopMsg {
+    display: block;
+}
+
+.mobileImg {
+    display: none;
+}
+
+/* Mobile Switch */
+@media (max-width: 768px) {
+    .desktopMsg {
+        display: none;
+    }
+
+    .mobileImg {
+        display: block;
+    }
+}
+
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+.textOverlay {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.leftControl {
+    text-align: left;
+}
+
+.productName {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.headline {
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+    color: #fff;
+}
+
+.ctaContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 12px 12px 12px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.priceTag {
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.subPrice {
+    font-size: 11px;
+    color: #bfbfbf;
+}
+
+@keyframes downloadBounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.buyButton {
+    background: linear-gradient(135deg, #007aff 0%, #0051a8 100%);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.buyButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.6);
+    background: linear-gradient(135deg, #298dff 0%, #006ce0 100%);
+}
+
+.buyButton:active {
+    transform: scale(0.95);
+}
+
+.btnIcon {
+    transition: transform 0.3s ease;
+}
+
+.buyButton:hover .btnIcon {
+    animation: downloadBounce 1s infinite;
+}
+
+@media (max-width: 900px) {
+    .textOverlay {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Left align */
+        bottom: 40px;
+        gap: 24px;
+        text-align: left;
+        /* Left align */
+    }
+
+    .headline {
+        font-size: 48px;
+    }
+
+    .ctaContainer {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

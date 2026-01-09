@@ -1,0 +1,276 @@
+/* Main Floating Pill Container */
+.navbar {
+    position: fixed;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    min-width: unset;
+    height: auto;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Brand Pill - Separate Left aligned */
+.brandPill {
+    position: fixed;
+    top: 32px;
+    /* Dynamically align with the Hero text (matches width: 90% max-width: 1600px centered) */
+    left: max(5%, calc(50% - 800px));
+    height: 44px;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brandPill:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.brandLogo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.brandPill .brandName {
+    font-weight: 700;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+}
+
+/* Left - Logo (Simplified) */
+.navLeft {
+    display: none;
+    /* Hidden as per request for "new" */
+    align-items: center;
+    padding: 0 12px;
+    height: 40px;
+}
+
+.brandName {
+    font-weight: 700;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+}
+
+.appleLogo {
+    display: none;
+    /* Hidden for cleaner pill look as per request for "new" */
+}
+
+/* Center - Links (Animated) */
+.navCenter {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.navLink {
+    position: relative;
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+}
+
+.navLink:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    /* Pill hover effect */
+    transform: translateY(-1px);
+}
+
+/* Right - Actions */
+.navRight {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 8px;
+}
+
+.iconBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #999;
+}
+
+.iconBtn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.actionBtn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 4px;
+}
+
+.actionBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #fff;
+}
+
+/* Mobile Menu Overlay - Premium Full Screen */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: 9998;
+    /* Behind navbar toggle */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 20px;
+}
+
+.mobileLink {
+    color: #888;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobileLink:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.mobileLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.mobileLink:hover::after {
+    width: 40px;
+}
+
+@keyframes slideDown {
+    /* Not used in new design, handled by Framer Motion or JS logic if simplified */
+}
+
+@media (max-width: 768px) {
+
+    /* Navbar becomes a floating circle button on mobile */
+    .navbar {
+        top: 24px;
+        right: 24px;
+        /* Moved to right */
+        left: auto;
+        /* Unset left */
+        transform: none;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(20, 20, 20, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navRight {
+        padding: 0;
+    }
+
+    .navCenter,
+    .brandPill {
+        display: none;
+    }
+
+    .actionBtn {
+        display: none;
+    }
+
+    .mobileToggle {
+        display: block;
+        padding: 0;
+    }
+}

@@ -1,0 +1,164 @@
+.section {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    /* Reduced significantly since it's just text now */
+    background-color: #000;
+    overflow: hidden;
+    margin-top: -10vh;
+    /* Reduced spacing with previous section */
+    /* Mask the bottom to prevent hard clipping lines of background effects */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.stickyContainer {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background Radiating Circles (Cyan/Blue) */
+.backgroundEffects {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    /* Cyan tint */
+    opacity: 0;
+    transform: scale(0.5);
+    animation: pulse 4s infinite linear;
+}
+
+.circle:nth-child(1) {
+    width: 40vw;
+    height: 40vw;
+    animation-delay: 0s;
+    border-color: rgba(6, 182, 212, 0.1);
+}
+
+.circle:nth-child(2) {
+    width: 50vw;
+    height: 50vw;
+    animation-delay: 1.3s;
+    border-color: rgba(6, 182, 212, 0.2);
+}
+
+.circle:nth-child(3) {
+    width: 60vw;
+    height: 60vw;
+    animation-delay: 2.6s;
+    border-color: rgba(6, 182, 212, 0.05);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Dancer Image */
+.dancerWrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dancerImage {
+    width: auto;
+    height: 90vh;
+    /* Fit within the viewport height */
+    max-width: 100%;
+    object-fit: contain;
+    /* Ensure full dancer is visible */
+    object-position: center bottom;
+    z-index: 2;
+
+    /* Mask to blend the bottom smoothly into the container's black background */
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
+    /* Optimize rendering */
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+}
+
+/* Text Overlay - Centered */
+.textOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Classic absolute centering */
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -2px;
+    /* Cyan gradient text */
+    background: linear-gradient(180deg, #fff 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #67e8f9;
+    /* Light Cyan */
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .section {
+        height: 60vh;
+        /* Drastically reduced for mobile text-only view */
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .textOverlay {
+        top: 50%;
+        /* Keep centered */
+    }
+}
