@@ -29,7 +29,9 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    display: none;
+    object-position: center;
+    display: block;
+    /* Force visible */
     /* Use filter for smoother, high-quality darkening */
     filter: brightness(0.6) contrast(1.1);
     will-change: transform;
