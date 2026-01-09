@@ -124,16 +124,27 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         }
 
         const tl = gsap.timeline({ paused: true });
+        const isMobile = window.innerWidth < 768;
 
         // Force visibility ON at start of open
         tl.set([panel, ...layers], { autoAlpha: 1 });
 
-        layerStates.forEach((ls, i) => {
-            tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
-        });
-        const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
-        const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+        if (!isMobile) {
+            // Desktop: Full staggered animation
+            layerStates.forEach((ls, i) => {
+                tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
+            });
+        } else {
+            // Mobile: Skip pre-layers to reduce heaviness, just snap them or hide them
+            // Actually, we can just hide them or let them be behind. 
+            // Better: Animate only the main panel for performance.
+            gsap.set(layers, { autoAlpha: 0 }); // Hide prelayers on mobile
+        }
+
+        const lastTime = (!isMobile && layerStates.length) ? (layerStates.length - 1) * 0.07 : 0;
+        const panelInsertTime = lastTime + ((!isMobile && layerStates.length) ? 0.08 : 0);
         const panelDuration = 0.65;
+
         tl.fromTo(
             panel,
             { xPercent: panelStart },
