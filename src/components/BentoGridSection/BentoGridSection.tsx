@@ -46,7 +46,7 @@ export default function BentoGridSection() {
                         </div>
                         <div className={styles.cardContent}>
                             <h3 className={styles.cardTitle}>Spatial Audio.</h3>
-                            <p className={styles.cardDesc}>Dolby Atmos, Dirac, and DTS:X compatible for immersive surround sound.</p>
+                            <p className={styles.cardDesc}>Powered by Meridian Audio for immersive studio-grade surround sound.</p>
                         </div>
                     </motion.div>
 

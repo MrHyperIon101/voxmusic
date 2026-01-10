@@ -56,7 +56,7 @@ export default function DownloadGrid() {
 
                     <div className={styles.actions}>
                         {/* Download Official (Placeholder link) */}
-                        <a href="#" className={styles.primaryAction}>
+                        <a href="https://github.com/MrHyperIon101/voxmusic/releases/download/3M-Special/Codename-Orion.Release.apk" className={styles.primaryAction}>
                             <div className={styles.btnText}>
                                 <span className={styles.btnTitle}>Download Official</span>
                                 <span className={styles.btnSub}>Codename Orion (v2.3.2026)</span>

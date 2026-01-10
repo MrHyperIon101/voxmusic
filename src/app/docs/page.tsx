@@ -328,7 +328,7 @@ export default function DocsPage() {
                                         Voxtrona is currently available for Android devices (Android 12+).
                                         Download the latest stable APK to get started.
                                     </p>
-                                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.3.2026-release.apk" className={styles.btnDownload}>
+                                    <a href="https://github.com/MrHyperIon101/voxmusic/releases/download/3M-Special/Codename-Orion.Release.apk" className={styles.btnDownload}>
                                         <Download size={18} /> Download Official Release
                                     </a>
                                 </AlertBox>
