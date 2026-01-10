@@ -328,7 +328,7 @@ export default function DocsPage() {
                                         Voxtrona is currently available for Android devices (Android 12+).
                                         Download the latest stable APK to get started.
                                     </p>
-                                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.2.2026-release.apk" className={styles.btnDownload}>
+                                    <a href="https://github.com/MrHyperIon101/voxtrona/releases/download/Official-R/VoxtronaMusic-full-arm64-v2.3.2026-release.apk" className={styles.btnDownload}>
                                         <Download size={18} /> Download Official Release
                                     </a>
                                 </AlertBox>
@@ -380,15 +380,15 @@ export default function DocsPage() {
                         {/* Audio Enhancements */}
                         <DocSection id="audio-enhancements" icon={Waves} title="Audio Enhancements">
                             <DocSubsection title="Spatial Audio" id="audio-enhancements-spatial-audio">
-                                <AlertBox type="blue" icon={Headphones} title="Native Spatial Audio (Android 13+)">
+                                <AlertBox type="blue" icon={Headphones} title="Premium Spatial Audio">
                                     <p style={{ color: '#ccc', marginBottom: '12px' }}>
-                                        Integration with Android's Spatializer API for system-level spatial audio processing.
-                                        Supports head tracking with compatible headphones (Galaxy Buds Pro, Pixel Buds Pro, etc.).
+                                        Integration with Meridian Audio's advanced spatial processing technology for studio-grade 3D audio.
+                                        Android 13+ users also benefit from native Spatializer API support with head tracking on compatible headphones.
                                     </p>
                                     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                                        <div className={styles.tag}>Dirac Live</div>
-                                        <div className={styles.tag}>Dolby Atmos</div>
-                                        <div className={styles.tag}>DTS:X Ultra</div>
+                                        <div className={styles.tag}>Meridian Audio</div>
+                                        <div className={styles.tag}>Android Spatializer</div>
+                                        <div className={styles.tag}>Head Tracking</div>
                                     </div>
                                 </AlertBox>
                             </DocSubsection>

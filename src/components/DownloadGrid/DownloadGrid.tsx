@@ -35,7 +35,7 @@ export default function DownloadGrid() {
                         <div className={styles.featureBox}>
                             <div className={styles.featIcon}><Zap size={18} color="#a4c639" /></div>
                             <div className={styles.featTitle}>Spatial Audio</div>
-                            <div className={styles.featDesc}>Dolby / DTS:X</div>
+                            <div className={styles.featDesc}>Meridian</div>
                         </div>
                         <div className={styles.featureBox}>
                             <div className={styles.featIcon}><Music size={18} color="#a4c639" /></div>
@@ -59,7 +59,7 @@ export default function DownloadGrid() {
                         <a href="#" className={styles.primaryAction}>
                             <div className={styles.btnText}>
                                 <span className={styles.btnTitle}>Download Official</span>
-                                <span className={styles.btnSub}>v2.2.0 Stable</span>
+                                <span className={styles.btnSub}>Codename Orion (v2.3.2026)</span>
                             </div>
                             <ArrowRight size={16} className={styles.arrow} />
                         </a>

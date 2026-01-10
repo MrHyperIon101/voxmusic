@@ -7,7 +7,7 @@ import styles from './support.module.css';
 
 export default function SupportPage() {
     const [formData, setFormData] = useState({
-        name: '', email: '', platform: 'Android', version: 'v2.2.2026',
+        name: '', email: '', platform: 'Android', version: 'Codename Orion (v2.3.2026)',
         steps: '', expected: '', actual: ''
     });
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -173,7 +173,7 @@ export default function SupportPage() {
 
                     <div className={styles.infoCard}>
                         <div className={styles.infoCardTitle}>Update App</div>
-                        <div className={styles.infoCardDesc}>Make sure you are on the latest version (v2.2.2026).</div>
+                        <div className={styles.infoCardDesc}>Make sure you are on the latest version (Codename Orion v2.3.2026).</div>
                     </div>
 
                     <div className={styles.infoCard}>
