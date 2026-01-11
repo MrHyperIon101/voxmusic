@@ -7,12 +7,14 @@ const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Download', ariaLabel: 'Download the app', link: '/download' },
     { label: 'Docs', ariaLabel: 'View documentation', link: '/docs' },
+    { label: 'Community', ariaLabel: 'Join the community', link: '/community' },
     { label: 'Support', ariaLabel: 'Get support', link: '/support' }
 ];
 
 const socialItems = [
+    { label: 'Twitter', link: 'https://x.com/mrhyperionai' },
     { label: 'Instagram', link: 'https://instagram.com/mrhyperion' },
-    { label: 'GitHub', link: 'https://github.com/MrHyperIon101' }
+    { label: 'GitHub', link: 'https://github.com/MrHyperIon101/voxmusic' }
 ];
 
 export default function Navbar() {

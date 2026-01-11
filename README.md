@@ -1,205 +1,132 @@
-# Voxtrona Music 🎵
+# Voxtrona
 
-> **High-Fidelity. Zero Compromise.**
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MrHyperIon101/voxtrona/main/public/favicon.png" alt="Voxtrona Logo" width="120" />
+  <h1 align="center">Deploy the Core</h1>
+  <p align="center">
+    <b>Next-Gen Audio Experience for Android & Windows</b>
+  </p>
+</div>
 
-The official marketing website for Voxtrona Music - a premium audiophile music player featuring Meridian Audio spatial processing, glassmorphic UI, and cross-platform support.
+<div align="center">
 
-**Current Version:** Codename Orion (v2.3.2026)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=for-the-badge&logo=kotlin)](https://kotlinlang.org/)
+[![Android](https://img.shields.io/badge/Android-15-3DDC84?style=for-the-badge&logo=android)](https://developer.android.com/)
 
-## 🌟 Features
+</div>
 
-### Core Functionality
-- **Premium Spatial Audio** - Meridian Audio integration for studio-grade 3D audio
-- **Lossless Playback** - FLAC & WAV support with bit-perfect output
-- **Multi-Platform** - Android, Windows Desktop, Smart TV (in development)
-- **Modern UI** - Liquid glass aesthetic with backdrop blur effects
-- **Responsive Design** - Optimized for desktop, tablet, and mobile devices
+<br />
 
-### Website Sections
-- 🏠 **Hero Section** - Dynamic video background with glassmorphic elements
-- ⚡ **Feature Showcase** - Spatial audio capabilities and playback features
-- 📱 **Highlights Carousel** - Interactive feature demonstration
-- 💎 **Bento Grid** - Advanced feature cards with glassmorphic design
-- 📥 **Download Page** - Platform-specific download cards with beta access
-- 📖 **Documentation** - Comprehensive user guide with search functionality
-- 🐛 **Support Page** - Bug reporting system with email integration
-- 🔗 **StaggeredMenu Navigation** - Animated floating menu with smooth transitions
+## 🚀 Introduction
 
-## 🎨 Design Philosophy
+**Voxtrona** is a premium audiophile music player and YouTube Music client for Android and Windows, featuring **Meridian Audio** spatial processing.
 
-Voxtrona Music embraces a **premium glassmorphic aesthetic** with:
-- Pure black (#000) background for OLED optimization
-- Transparent layers with backdrop blur effects
-- Smooth GSAP-powered animations
-- White/grayscale accent colors (no purple)
-- Responsive layouts that adapt seamlessly across devices
+It features a highly immersive, sci-fi inspired interface designed to "wow" users from the first interaction. The **Liquid Glass** aesthetic combines with a custom high-fidelity audio engine to deliver a zero-compromise experience.
+
+> [!NOTE] 
+> **Current Version:** Codename Orion (v2.3.2026) | **Status:** 3M Special Release
+
+## ✨ Features
+
+### 🎧 Core Playback
+
+- **Lossless Streaming**: High-fidelity audio streaming up to FLAC/WAV quality.
+- **Voxtron Engine 2.0**: Custom audio processing pipeline for bit-perfect playback.
+- **Background Play**: Seamless background playback with Picture-in-Picture (PiP) support.
+- **Speed & Pitch**: Real-time control with granular precision.
+
+### 🎛️ Audio FX (Meridian Audio)
+
+- **Meridian Spatial Audio**: Native spatial audio support (Android 13+) with head tracking.
+- **Dirac & Dolby**: Profiles for Dirac Live and Dolby Atmos integrated alongside Meridian.
+- **Professional EQ**: Multi-band equalizer with bass boost, virtualizer, and reverb.
+- **Liquid EQ**: Visual audio spectrum analyzer in the "Immersive UI".
+
+### 🎤 Lyrics & Canvas
+
+- **Synced Lyrics**: Real-time time-synced lyrics from multiple providers (LRCLIB, Musixmatch).
+- **AI Translation**: On-the-fly lyric translation powered by Gemini/OpenAI.
+- **Spotify Canvas**: 2K looping video backgrounds for supported tracks.
+- **Fullscreen Mode**: Immersive blur mode for pure lyric enjoyment.
+
+### 📚 Library Management
+
+- **Unified Library**: Merge local tracks, YouTube playlists, and Spotify collections.
+- **Offline Mode**: Smart caching and manual downloads for offline listening.
+- **Backup & Sync**: Cross-device playlist and setting synchronization via Voxtrona Cloud.
+
+### 🎨 Interface (Liquid Glass)
+
+- **Liquid Glass UI**: Stunning blur effects, mesh gradients, and smooth animations.
+- **OLED Mode**: True pitch-black theme for AMOLED displays.
+- **StaggeredMenu**: Unique animated navigation system.
+- **Mini Player**: Gesture-based swipe controls.
 
 ## 🛠️ Tech Stack
 
-### Framework & Core
-- **Next.js 16.1.1** (App Router) with Turbopack
-- **React 19**
-- **TypeScript**
+### Website (This Repo)
 
-### Styling & Animation
-- **Vanilla CSS Modules** (No Tailwind)
-- **Framer Motion** - Scroll animations and transitions
-- **GSAP** - Advanced menu animations
-- **Outfit Font** (Google Fonts) - Primary typography
+- **Framework**: [Next.js 16.1](https://nextjs.org/) (App Router)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Vanilla CSS Modules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Modules) (No Tailwind)
+- **Animations**: [GSAP](https://gsap.com/) & [Framer Motion](https://www.framer.com/motion/)
 
-### UI Components
-- **Lucide React** - Icon library
-- Custom glassmorphic components (Hero, StaggeredMenu, DownloadGrid, BentoGrid, etc.)
+### Android Application
 
-### Backend Integration
-- **AWS SES** - Email service for bug reports
-- **Nodemailer** - Email handling
-- **Next.js API Routes** - Backend endpoints
+- **Language**: **Kotlin** (100% Native)
+- **Architecture**: MVVM / Clean Architecture
+- **UI**: Jetpack Compose
+- **Audio Engine**: Custom C++ / Kotlin implementation using Meridian SDK
 
-## 🚀 Getting Started
+## ❓ FAQ
 
-### Prerequisites
-- Node.js 18+ or Bun
-- npm, yarn, pnpm, or bun
+**1. Wrong Lyrics?**
+Lyrics are fetched from LRCLIB. Sometimes mismatches occur due to timing metadata variance.
 
-### Installation
+**2. Why the name Voxtrona?**
+It's a fusion of _Vox_ (voice) and _Electronica_. Voxtrona isn't just music — it's an experience.
 
-```bash
-# Clone the repository
-git clone https://github.com/MrHyperIon101/voxtrona.git
-cd voxmusic
+For more FAQs, check our [Documentation](https://voxtrona.souvikbagchi.social/docs).
 
-# Install dependencies
-npm install
-# or
-bun install
+## ⚡ Getting Started (Website)
 
-# Set up environment variables
-cp .env.example .env.local
-# Add your AWS credentials and SMTP settings
-```
+1.  Clone the repository:
 
-### Environment Variables
+    ```bash
+    git clone https://github.com/MrHyperIon101/voxtrona.git
+    cd voxmusic
+    ```
 
-Create a `.env.local` file with:
+2.  Install dependencies:
 
-```env
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-AWS_REGION=your-region
-AWS_ACCESS_KEY_ID=your-access-key
-AWS_SECRET_ACCESS_KEY=your-secret-key
-```
+    ```bash
+    npm install
+    # or
+    bun install
+    ```
 
-### Development
+3.  Run the development server:
 
-```bash
-# Run the development server
-npm run dev
-# or
-bun dev
+    ```bash
+    npm run dev
+    ```
 
-# Open http://localhost:3000
-```
-
-### Build
-
-```bash
-# Create production build
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📁 Project Structure
-
-```
-voxmusic/
-├── src/
-│   ├── app/                    # Next.js app router
-│   │   ├── page.tsx           # Home page
-│   │   ├── download/          # Download page
-│   │   ├── docs/              # Documentation page
-│   │   ├── support/           # Support page
-│   │   └── api/               # API routes
-│   ├── components/            # React components
-│   │   ├── Navbar/           # Navigation with StaggeredMenu
-│   │   ├── Hero/             # Hero section with video
-│   │   ├── FeatureSection/   # Spatial audio feature
-│   │   ├── HighlightsSection/ # Feature carousel
-│   │   ├── BentoGridSection/ # Feature cards
-│   │   ├── DownloadGrid/     # Platform downloads
-│   │   ├── StaggeredMenu/    # Animated menu
-│   │   └── Footer/           # Site footer
-│   └── styles/               # Global styles
-├── public/                   # Static assets
-│   ├── favicon.png
-│   ├── hero-desktop.mp4
-│   └── *.jpg                 # Background images
-└── package.json
-```
-
-## 🎯 Key Features
-
-### Meridian Audio Integration
-Premium spatial audio processing technology for immersive 3D sound. Replaces legacy Dolby/DTS implementations with studio-grade processing.
-
-### StaggeredMenu Navigation
-Custom-built animated navigation menu with:
-- GSAP-powered slide-in animations
-- Mobile-optimized performance (reduced backdrop blur)
-- Icon-only circular toggle button
-- Floating rounded panel design
-
-### Glassmorphic UI
-Consistent design language across all components:
-- Backdrop blur effects (`backdrop-filter: blur()`)
-- Semi-transparent cards with border highlights
-- Smooth hover transitions
-- Shadow depth for floating elements
-
-### Performance Optimizations
-- Mobile-specific animation tuning (faster durations, reduced complexity)
-- GSAP animations with GPU acceleration
-- Optimized backdrop blur on mobile devices
-- Lazy loading for images and components
-
-## 📱 Supported Platforms
-
-### In Production
-- ✅ **Android** - v2.3.2026 (Codename Orion)
-  - Meridian Audio spatial processing
-  - Lossless FLAC/WAV support
-  - Bit-perfect playback
-
-### In Development
-- 🚧 **Windows Desktop** - Beta available
-- 🚧 **Smart TV** - Waitlist open
-
-## 🐛 Bug Reports
-
-Submit bugs through the [Support Page](/support) or via email integration. Bug reports are automatically sent to the development team via AWS SES.
-
-## 📄 License
-
-Copyright © 2025-2028 Voxtrona Music. All rights reserved.
+4.  Open [http://localhost:3000](http://localhost:3000)
 
 ## 👨‍💻 Credits
 
-- **Website Design**: Souvik Bagchi
-- **Development**: MrHyperIon101
-- **Spatial Audio**: Powered by Meridian Audio
+- **[MrHyperIon101](https://github.com/MrHyperIon101)** — Founder, Lead Developer
+- **Meridian Audio** — Spatial Audio Partner
+- **[Souvik Bagchi](https://github.com/sb-im)** — Design Inspiration
 
-## 🔗 Links
+## 📄 License
 
-- [Live Website](https://voxtrona.vercel.app)
-- [Download App](https://voxtrona.vercel.app/download)
-- [Documentation](https://voxtrona.vercel.app/docs)
-- [Support](https://voxtrona.vercel.app/support)
-- [GitHub](https://github.com/MrHyperIon101/voxtrona)
-- [Instagram](https://instagram.com/mrhyperion)
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-**Built with ❤️ using Next.js and powered by Meridian Audio**
+<div align="center">
+  <p>Built with ❤️ by the Voxtrona Team</p>
+</div>
