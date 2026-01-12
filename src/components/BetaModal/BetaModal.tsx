@@ -70,7 +70,7 @@ export default function BetaModal({ isOpen, onClose, platform, mode = 'default' 
                     <form onSubmit={handleSubmit} className={styles.form}>
                         <p style={{ fontSize: '14px', color: '#888' }}>
                             {isPlayStore
-                                ? "As the app is in closed testing for 14 weeks in accordance with Play Store policies, your email is required to grant access."
+                                ? "As the app is in closed testing for 14 continuous days in accordance with Play Store policies, your email is required to grant access."
                                 : "Get early access to daily builds and exclusive features."}
                         </p>
                         <input
