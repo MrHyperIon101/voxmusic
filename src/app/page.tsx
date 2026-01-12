@@ -7,10 +7,12 @@ import BentoGridSection from '@/components/BentoGridSection/BentoGridSection';
 import WhyImmersiveSection from '@/components/WhyImmersiveSection/WhyImmersiveSection';
 import WhyGridSection from '@/components/WhyGridSection/WhyGridSection';
 import Footer from '@/components/Footer/Footer';
+import AnnouncementPopup from '@/components/AnnouncementPopup/AnnouncementPopup';
 
 export default function Home() {
   return (
     <main>
+      <AnnouncementPopup />
       <Navbar />
       <Hero />
       <FeatureSection />
