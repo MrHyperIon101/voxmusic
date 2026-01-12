@@ -67,7 +67,7 @@ export default function AnnouncementPopup() {
                                 Available Now
                             </h3>
                             <p style={{ color: '#aaa', marginBottom: '24px', fontSize: '15px', lineHeight: 1.5 }}>
-                                Download VoxMusic directly from the Google Play Store or get the APK.
+                                Download Voxtrona Music directly from the Google Play Store or get the APK.
                             </p>
                             <a href="/download" className={styles.ctaBtn} onClick={handleClose}>
                                 Download
