@@ -85,7 +85,7 @@ const sections = [
 const quickLinks = [
     { label: "Download App", icon: Download, href: "/download" },
     { label: "Report Bug", icon: Code, href: "/support" },
-    { label: "Community", icon: Users, href: "#" },
+    { label: "Community", icon: Users, href: "/community" },
     { label: "Support", icon: Shield, href: "/support" },
 ];
 
