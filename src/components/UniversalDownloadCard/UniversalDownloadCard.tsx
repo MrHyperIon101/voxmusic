@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Smartphone, Monitor, Tv, ArrowRight, Download, Info } from 'lucide-react';
+import { Smartphone, Monitor, Tv, ArrowRight, Download, Info, Github } from 'lucide-react';
 import styles from './UniversalDownloadCard.module.css';
 
 import BetaModal from '../BetaModal/BetaModal';
@@ -19,6 +19,18 @@ const WindowsLogo = ({ size = 24, color = "currentColor" }: { size?: number, col
         <path d="M0 0H11.377V11.377H0V0ZM12.623 0H24V11.377H12.623V0ZM0 12.623H11.377V24H0V12.623ZM12.623 12.623H24V24H12.623V12.623Z" fill={color} />
     </svg>
 );
+
+const PlayStoreLogo = ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 2.5L19.5 12L4.5 21.5V2.5Z" fill="#fff" />
+        <path d="M22.2 12L16.2 15.6L14.7 12L16.2 8.4L22.2 12Z" fill="#FFC107" />
+        <path d="M16.2 15.6L4.5 21.5L14.7 12L16.2 15.6Z" fill="#F44336" />
+        <path d="M16.2 8.4L14.7 12L4.5 2.5L16.2 8.4Z" fill="#4CAF50" />
+        <path d="M4.5 2.5V21.5L14.7 12L4.5 2.5Z" fill="#2196F3" />
+    </svg>
+);
+
+// ... (platforms data is mostly static but primaryAction href needs to be accessible if moved)
 
 const platforms = [
     {
@@ -46,6 +58,7 @@ const platforms = [
             active: true
         }
     },
+    // ... [Other platforms unchanged]
     {
         id: 'windows',
         label: 'Windows',
@@ -101,9 +114,11 @@ const platforms = [
 export default function UniversalDownloadCard() {
     const [activeTab, setActiveTab] = useState('android');
     const [isBetaOpen, setIsBetaOpen] = useState(false);
+    const [modalMode, setModalMode] = useState<'default' | 'playstore'>('default');
     const currentPlatform = platforms.find(p => p.id === activeTab) || platforms[0];
 
-    const openBeta = () => {
+    const openBeta = (mode: 'default' | 'playstore' = 'default') => {
+        setModalMode(mode);
         setIsBetaOpen(true);
     };
 
@@ -175,23 +190,53 @@ export default function UniversalDownloadCard() {
                             </div>
 
                             <div className={styles.actions}>
-                                {currentPlatform.primaryAction.active ? (
-                                    <a href={currentPlatform.primaryAction.href} className={styles.mainBtn}>
-                                        <Download size={20} />
-                                        {currentPlatform.primaryAction.label}
-                                    </a>
-                                ) : (
-                                    <button className={`${styles.mainBtn} ${styles.disabledBtn}`} disabled>
-                                        {currentPlatform.primaryAction.label}
-                                    </button>
-                                )}
+                                {currentPlatform.id === 'android' ? (
+                                    <div className={styles.actionGrid}>
+                                        <button
+                                            onClick={() => openBeta('playstore')}
+                                            className={styles.mainBtn}
+                                        >
+                                            <PlayStoreLogo size={24} />
+                                            Google Play
+                                        </button>
 
-                                <button
-                                    onClick={openBeta}
-                                    className={styles.secondaryBtn}
-                                >
-                                    {currentPlatform.secondaryAction.label}
-                                </button>
+                                        <div className={styles.secondaryActionRow}>
+                                            <a
+                                                href={currentPlatform.primaryAction.href}
+                                                className={styles.secondaryBtn}
+                                            >
+                                                <Github size={20} />
+                                                <span>APK</span>
+                                            </a>
+                                            <button
+                                                onClick={() => openBeta('default')}
+                                                className={styles.secondaryBtn}
+                                            >
+                                                <span>Join Beta</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        {currentPlatform.primaryAction.active ? (
+                                            <a href={currentPlatform.primaryAction.href} className={styles.mainBtn}>
+                                                <Download size={20} />
+                                                {currentPlatform.primaryAction.label}
+                                            </a>
+                                        ) : (
+                                            <button className={`${styles.mainBtn} ${styles.disabledBtn}`} disabled>
+                                                {currentPlatform.primaryAction.label}
+                                            </button>
+                                        )}
+
+                                        <button
+                                            onClick={() => openBeta('default')}
+                                            className={styles.secondaryBtn}
+                                        >
+                                            {currentPlatform.secondaryAction.label}
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         </motion.div>
                     </AnimatePresence>
@@ -202,6 +247,7 @@ export default function UniversalDownloadCard() {
                 isOpen={isBetaOpen}
                 onClose={() => setIsBetaOpen(false)}
                 platform={currentPlatform.label}
+                mode={modalMode}
             />
         </section>
     );

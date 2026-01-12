@@ -183,6 +183,26 @@
     align-items: center;
 }
 
+/* Action Buttons Grid Layout */
+.actionGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.secondaryActionRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.actionGrid .mainBtn,
+.actionGrid .secondaryBtn {
+    width: 100%;
+}
+
 .mainBtn {
     background: #fff;
     color: #000;
@@ -193,6 +213,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -205,13 +226,18 @@
 .secondaryBtn {
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
-    padding: 18px 32px;
+    padding: 16px 24px;
     border-radius: 16px;
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
 }
 
 .secondaryBtn:hover {

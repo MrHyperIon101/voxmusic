@@ -7,9 +7,10 @@ interface BetaModalProps {
     isOpen: boolean;
     onClose: () => void;
     platform: string;
+    mode?: 'default' | 'playstore';
 }
 
-export default function BetaModal({ isOpen, onClose, platform }: BetaModalProps) {
+export default function BetaModal({ isOpen, onClose, platform, mode = 'default' }: BetaModalProps) {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -23,16 +24,20 @@ export default function BetaModal({ isOpen, onClose, platform }: BetaModalProps)
             const res = await fetch('/api/beta-signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, platform }),
+                body: JSON.stringify({ email, platform, mode }),
             });
 
             if (res.ok) {
                 setStatus('success');
                 setTimeout(() => {
+                    if (mode === 'playstore') {
+                        // Optional: Redirect or just close. For now, we'll just close.
+                        // window.open('https://play.google.com/store/apps/details?id=com.voxmusic', '_blank');
+                    }
                     onClose();
                     setStatus('idle');
                     setEmail('');
-                }, 2000);
+                }, 3000);
             } else {
                 setStatus('error');
             }
@@ -41,11 +46,15 @@ export default function BetaModal({ isOpen, onClose, platform }: BetaModalProps)
         }
     };
 
+    const isPlayStore = mode === 'playstore';
+
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
                 <div className={styles.header}>
-                    <span className={styles.title}>Join Beta for {platform}</span>
+                    <span className={styles.title}>
+                        {isPlayStore ? 'Join Closed Testing' : `Join Beta for ${platform}`}
+                    </span>
                     <button onClick={onClose} className={styles.closeBtn}>
                         <X size={20} />
                     </button>
@@ -53,23 +62,27 @@ export default function BetaModal({ isOpen, onClose, platform }: BetaModalProps)
 
                 {status === 'success' ? (
                     <div className={styles.status + ' ' + styles.success}>
-                        Successfully joined the waitlist! Check your email.
+                        {isPlayStore
+                            ? "You've been added to the list! Please allow some time for Google to update permissions."
+                            : "Successfully joined the waitlist! Check your email."}
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className={styles.form}>
                         <p style={{ fontSize: '14px', color: '#888' }}>
-                            Get early access to daily builds and exclusive features.
+                            {isPlayStore
+                                ? "As the app is in closed testing for 14 weeks in accordance with Play Store policies, your email is required to grant access."
+                                : "Get early access to daily builds and exclusive features."}
                         </p>
                         <input
                             type="email"
-                            placeholder="Enter your email"
+                            placeholder="Enter your Google Play email"
                             className={styles.input}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                         <button type="submit" className={styles.submitBtn} disabled={status === 'loading'}>
-                            {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+                            {status === 'loading' ? 'Submitting...' : isPlayStore ? 'Request Access' : 'Join Waitlist'}
                         </button>
                         {status === 'error' && <div className={styles.status + ' ' + styles.error}>Something went wrong.</div>}
                     </form>
