@@ -59,7 +59,15 @@
     margin-bottom: 48px;
     position: relative;
     z-index: 10;
+    flex-wrap: wrap;
+    /* Allow tabs to wrap on small screens */
 }
+
+/* ... existing tab styles ... */
+
+/* ... existing styles ... */
+
+
 
 .tab {
     background: transparent;
@@ -181,6 +189,8 @@
     display: flex;
     gap: 16px;
     align-items: center;
+    flex-wrap: wrap;
+    /* Allow actions to wrap */
 }
 
 /* Action Buttons Grid Layout */
@@ -193,9 +203,10 @@
 }
 
 .secondaryActionRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    /* Changed from grid to flex since we have fewer items and need flexibility */
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .actionGrid .mainBtn,

@@ -83,7 +83,7 @@ const sections = [
 ];
 
 const quickLinks = [
-    { label: "Download App", icon: Download, href: "/download" },
+    { label: "Download App", icon: Download, href: "https://play.google.com/store/apps/details?id=com.voxtrona.music" },
     { label: "Report Bug", icon: Code, href: "/support" },
     { label: "Community", icon: Users, href: "/community" },
     { label: "Support", icon: Shield, href: "/support" },
@@ -328,7 +328,7 @@ export default function DocsPage() {
                                         Voxtrona is currently available for Android devices (Android 12+).
                                         Download the latest stable APK to get started.
                                     </p>
-                                    <a href="https://github.com/MrHyperIon101/voxmusic/releases/download/3M-Special/Codename-Orion.Release.apk" className={styles.btnDownload}>
+                                    <a href="https://play.google.com/store/apps/details?id=com.voxtrona.music" target="_blank" rel="noopener noreferrer" className={styles.btnDownload}>
                                         <Download size={18} /> Download Official Release
                                     </a>
                                 </AlertBox>
@@ -537,7 +537,7 @@ export default function DocsPage() {
                                 <div style={{ color: '#9ca3af', marginBottom: '4px' }}>Ready to experience the future?</div>
                                 <div style={{ fontSize: '24px', fontWeight: 'bold' }}>Download Voxtrona Today</div>
                             </div>
-                            <a href="/download" className={styles.ctaButton}>
+                            <a href="https://play.google.com/store/apps/details?id=com.voxtrona.music" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
                                 Download Now <ArrowRight size={20} />
                             </a>
                         </div>

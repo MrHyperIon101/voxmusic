@@ -192,22 +192,18 @@ export default function UniversalDownloadCard() {
                             <div className={styles.actions}>
                                 {currentPlatform.id === 'android' ? (
                                     <div className={styles.actionGrid}>
-                                        <button
-                                            onClick={() => openBeta('playstore')}
+                                        <a
+                                            href="https://play.google.com/store/apps/details?id=com.voxtrona.music"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className={styles.mainBtn}
                                         >
                                             <PlayStoreLogo size={24} />
                                             Google Play
-                                        </button>
+                                        </a>
 
                                         <div className={styles.secondaryActionRow}>
-                                            <a
-                                                href={currentPlatform.primaryAction.href}
-                                                className={styles.secondaryBtn}
-                                            >
-                                                <Github size={20} />
-                                                <span>APK</span>
-                                            </a>
+
                                             <button
                                                 onClick={() => openBeta('default')}
                                                 className={styles.secondaryBtn}

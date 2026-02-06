@@ -32,7 +32,7 @@ export default function Footer() {
                     <div className={styles.linksColumn}>
                         <h4 className={styles.columnHeader}>NAVIGATION</h4>
                         <Link href="/" className={styles.columnLink}>Home</Link>
-                        <Link href="/download" className={styles.columnLink}>Download</Link>
+                        <a href="https://play.google.com/store/apps/details?id=com.voxtrona.music" target="_blank" rel="noopener noreferrer" className={styles.columnLink}>Download</a>
                         <Link href="/docs" className={styles.columnLink}>Docs</Link>
                         <Link href="/support" className={styles.columnLink}>Support</Link>
                     </div>
