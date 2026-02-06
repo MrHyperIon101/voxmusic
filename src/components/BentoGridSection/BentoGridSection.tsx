@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Cpu, Mic, Zap, BarChart3 } from 'lucide-react';
+import { Cpu, Mic, Zap, BarChart3, Users } from 'lucide-react';
 import styles from './BentoGridSection.module.css';
 
 export default function BentoGridSection() {
@@ -76,23 +76,18 @@ export default function BentoGridSection() {
                     {/* Card 4: Community Stats (Orange/Gold) */}
                     <motion.div
                         className={styles.card}
-                        style={{ background: 'linear-gradient(to bottom right, #f59e0b, #d97706)' }}
+                        style={{ background: 'linear-gradient(to bottom right, #020617, #1e1b4b)' }}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                         viewport={{ once: true }}
                     >
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                            <span style={{ fontSize: '56px', fontWeight: '800', color: '#fff', lineHeight: 1 }}>3M+</span>
-                            <span style={{ fontSize: '14px', fontWeight: '600', color: 'rgba(255,255,255,0.8)', textTransform: 'uppercase' }}>Downloads</span>
-
-                            <div style={{ width: '50px', height: '2px', background: 'rgba(255,255,255,0.4)', margin: '16px 0' }}></div>
-
-                            <span style={{ fontSize: '32px', fontWeight: '700', color: '#fff', lineHeight: 1 }}>500K+</span>
-                            <span style={{ fontSize: '12px', fontWeight: '600', color: 'rgba(255,255,255,0.8)', textTransform: 'uppercase' }}>Daily Active Users</span>
+                            <Users size={80} color="#fff" />
                         </div>
                         <div className={styles.cardContent}>
-                            <h3 className={styles.cardTitle} style={{ marginTop: '16px' }}>Join the Revolution.</h3>
+                            <h3 className={styles.cardTitle}>Join the Revolution.</h3>
+                            <p className={styles.cardDesc}>Powered by a global community of audiophiles. Shape the future of Voxtrona.</p>
                         </div>
                     </motion.div>
 
