@@ -59,9 +59,9 @@ export default function Hero() {
                             <p className={styles.price}>Deploy the Core</p>
                             <p className={styles.subPrice}>Audiophile-Grade Controls</p>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.voxtrona.music" target="_blank" rel="noopener noreferrer" className={styles.buyButton} aria-label="Download">
+                        <Link href="/download" className={styles.buyButton} aria-label="Download">
                             <Download size={24} className={styles.btnIcon} />
-                        </a>
+                        </Link>
                     </motion.div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 'use client';
 import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { Menu, X } from 'lucide-react';
 import './StaggeredMenu.css';
@@ -379,9 +380,28 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         {items && items.length ? (
                             items.map((it, idx) => (
                                 <li className="sm-panel-itemWrap" key={it.label + idx}>
-                                    <a className="sm-panel-item" href={it.link} aria-label={it.ariaLabel} data-index={idx + 1}>
-                                        <span className="sm-panel-itemLabel">{it.label}</span>
-                                    </a>
+                                    {it.link.startsWith('/') ? (
+                                        <Link
+                                            className="sm-panel-item"
+                                            href={it.link}
+                                            aria-label={it.ariaLabel}
+                                            data-index={idx + 1}
+                                            onClick={closeMenu}
+                                        >
+                                            <span className="sm-panel-itemLabel">{it.label}</span>
+                                        </Link>
+                                    ) : (
+                                        <a
+                                            className="sm-panel-item"
+                                            href={it.link}
+                                            aria-label={it.ariaLabel}
+                                            data-index={idx + 1}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <span className="sm-panel-itemLabel">{it.label}</span>
+                                        </a>
+                                    )}
                                 </li>
                             ))
                         ) : (

@@ -5,7 +5,7 @@ import StaggeredMenu from '../StaggeredMenu/StaggeredMenu';
 
 const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-    { label: 'Download', ariaLabel: 'Download the app', link: 'https://play.google.com/store/apps/details?id=com.voxtrona.music' },
+    { label: 'Download', ariaLabel: 'Download the app', link: '/download' },
     { label: 'Docs', ariaLabel: 'View documentation', link: '/docs' },
     { label: 'Community', ariaLabel: 'Join the community', link: '/community' },
     { label: 'Support', ariaLabel: 'Get support', link: '/support' }
