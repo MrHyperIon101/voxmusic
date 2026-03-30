@@ -1,4 +1,3 @@
-# Voxtrona
 
 <div align="center">
   <h1 align="center">Deploy the Core</h1>
