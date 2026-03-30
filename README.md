@@ -25,7 +25,7 @@
 It features a highly immersive, sci-fi inspired interface designed to "wow" users from the first interaction. The **Liquid Glass** aesthetic combines with a custom high-fidelity audio engine to deliver a zero-compromise experience.
 
 > [!NOTE] 
-> **Current Version:** Codename Orion (v2.3.2026) | **Status:** 3M Special Release
+> **Current Version:** Codename Orion (v3.0) | **Status:** Voxtpunk x Cyberpunk 2077
 
 ## ✨ Features
 
