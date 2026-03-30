@@ -1,7 +1,6 @@
 # Voxtrona
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MrHyperIon101/voxtrona/main/public/favicon.png" alt="Voxtrona Logo" width="120" />
   <h1 align="center">Deploy the Core</h1>
   <p align="center">
     <b>Next-Gen Audio Experience for Android & Windows</b>
